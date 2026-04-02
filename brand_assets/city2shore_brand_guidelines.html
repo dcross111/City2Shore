@@ -1,0 +1,580 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .bg {
+    background: #0a0a0a;
+    min-height: 100vh;
+    padding: 3rem 2rem;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .masthead {
+    border-bottom: 0.5px solid #2a2a2a;
+    padding-bottom: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    background: linear-gradient(135deg, #e8e8e8 0%, #c0c8d4 40%, #ffffff 70%, #b8c4d0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-transform: uppercase;
+  }
+
+  .doc-label {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: #4a4a4a;
+    text-transform: uppercase;
+  }
+
+  .section {
+    margin-bottom: 4rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-num {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: #4a4a4a;
+    font-weight: 400;
+    min-width: 24px;
+  }
+
+  .section-title {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #7a8a96;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 0.5px;
+    background: #1e1e1e;
+  }
+
+  /* LOGO SECTION */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .logo-card {
+    border: 0.5px solid #1e1e1e;
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .logo-card.dark-bg { background: #0d0d0d; }
+  .logo-card.mid-bg { background: #141820; }
+  .logo-card.light-bg { background: #c8d4de; }
+
+  .logo-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .logo-mark.on-dark {
+    background: linear-gradient(135deg, #d8dfe8 0%, #b0beca 40%, #ffffff 70%, #b0beca 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-mark.on-ice {
+    background: linear-gradient(135deg, #ffffff 0%, #e8f0f6 50%, #c8d8e8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-mark.on-light { color: #1a1a1a; }
+
+  .logo-sub {
+    font-size: 7px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .logo-sub.on-dark { color: #5a6a76; }
+  .logo-sub.on-ice { color: #8aaab8; }
+  .logo-sub.on-light { color: #2a3a44; }
+
+  .logo-tag {
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #3a4a54;
+    font-weight: 400;
+    padding: 4px 10px;
+    border: 0.5px solid #2a3a44;
+    border-radius: 2px;
+  }
+
+  .usage-note {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .usage-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .usage-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .usage-dot.ok { background: #4a7a5a; }
+  .usage-dot.no { background: #7a4a4a; }
+
+  .usage-text {
+    font-size: 10px;
+    color: #4a4a4a;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  /* COLOR SECTION */
+  .color-row {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .swatch-card {
+    border-radius: 4px;
+    overflow: hidden;
+    border: 0.5px solid #1e1e1e;
+  }
+
+  .swatch-block {
+    height: 80px;
+    position: relative;
+  }
+
+  .swatch-primary-tag {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    font-size: 8px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-weight: 500;
+  }
+
+  .swatch-info {
+    background: #0d0d0d;
+    padding: 10px 12px;
+  }
+
+  .swatch-name {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9a9a9a;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .swatch-hex {
+    font-size: 11px;
+    color: #4a5a64;
+    font-family: 'Montserrat', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .color-rule {
+    background: #0d0d0d;
+    border: 0.5px solid #1e1e1e;
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .color-rule-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rule-swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .rule-text {
+    font-size: 10px;
+    color: #4a4a4a;
+    letter-spacing: 0.05em;
+    line-height: 1.6;
+  }
+
+  /* TYPOGRAPHY SECTION */
+  .type-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+
+  .type-card {
+    background: #0d0d0d;
+    border: 0.5px solid #1e1e1e;
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+
+  .type-specimen-display {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: #c8d4de;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .type-specimen-body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: #5a6a76;
+    letter-spacing: 0.08em;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .type-meta {
+    border-top: 0.5px solid #1e1e1e;
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .type-name {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #7a8a96;
+    font-weight: 500;
+  }
+
+  .type-use {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #3a4a54;
+    border: 0.5px solid #2a3a44;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .type-scale {
+    background: #0d0d0d;
+    border: 0.5px solid #1e1e1e;
+    border-radius: 4px;
+    padding: 1.5rem;
+  }
+
+  .scale-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    padding: 10px 0;
+    border-bottom: 0.5px solid #141414;
+  }
+  .scale-row:last-child { border-bottom: none; }
+
+  .scale-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #3a4a54;
+    text-transform: uppercase;
+    min-width: 60px;
+    font-weight: 500;
+  }
+
+  .scale-sample { color: #b8c8d4; }
+  .scale-h1 { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 300; letter-spacing: 0.06em; }
+  .scale-h2 { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; letter-spacing: 0.05em; }
+  .scale-h3 { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; }
+  .scale-body { font-family: 'Montserrat', sans-serif; font-size: 13px; font-weight: 300; letter-spacing: 0.06em; }
+  .scale-caption { font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; }
+
+  .scale-spec {
+    font-size: 9px;
+    color: #2a3a44;
+    margin-left: auto;
+    letter-spacing: 0.05em;
+  }
+
+  .footer {
+    border-top: 0.5px solid #1a1a1a;
+    padding-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: #2a3a44;
+    text-transform: uppercase;
+  }
+
+  .footer-ver {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #2a2a2a;
+    text-transform: uppercase;
+  }
+</style>
+
+<div class="bg">
+
+  <div class="masthead">
+    <div>
+      <div class="brand-name">City2Shore</div>
+      <div style="font-size:9px; letter-spacing:0.3em; color:#2a3a44; text-transform:uppercase; margin-top:6px;">Real Estate Group</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="doc-label">Brand Guidelines</div>
+      <div style="font-size:9px; color:#2a2a2a; margin-top:4px; letter-spacing:0.1em;">Version 1.0 — 2026</div>
+    </div>
+  </div>
+
+  <!-- LOGO USAGE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Logo Usage</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="logo-grid">
+      <div class="logo-card dark-bg">
+        <div style="text-align:center;">
+          <div class="logo-mark on-dark">City2Shore</div>
+          <div class="logo-sub on-dark" style="margin-top:6px;">Real Estate Group</div>
+        </div>
+        <div class="logo-tag">Primary — Dark</div>
+      </div>
+      <div class="logo-card mid-bg">
+        <div style="text-align:center;">
+          <div class="logo-mark on-ice">City2Shore</div>
+          <div class="logo-sub on-ice" style="margin-top:6px;">Real Estate Group</div>
+        </div>
+        <div class="logo-tag" style="border-color:#3a5060; color:#5a7a8a;">Primary — Ice</div>
+      </div>
+      <div class="logo-card light-bg">
+        <div style="text-align:center;">
+          <div class="logo-mark on-light">City2Shore</div>
+          <div class="logo-sub on-light" style="margin-top:6px;">Real Estate Group</div>
+        </div>
+        <div class="logo-tag" style="border-color:#1a2a34; color:#1a2a34;">Reversed — Light</div>
+      </div>
+    </div>
+
+    <div class="usage-note">
+      <div class="usage-item">
+        <div class="usage-dot ok"></div>
+        <div class="usage-text">Use silver-gradient version on black or near-black backgrounds</div>
+      </div>
+      <div class="usage-item">
+        <div class="usage-dot ok"></div>
+        <div class="usage-text">Use ice version on dark navy or midnight blue surfaces</div>
+      </div>
+      <div class="usage-item">
+        <div class="usage-dot no"></div>
+        <div class="usage-text">Never place on busy photography without overlay</div>
+      </div>
+      <div class="usage-item">
+        <div class="usage-dot no"></div>
+        <div class="usage-text">Never stretch, rotate, or apply unauthorized color fills</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLOR PALETTE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">Color Palette</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="color-row">
+      <div class="swatch-card">
+        <div class="swatch-block" style="background:#0a0a0a;">
+          <div class="swatch-primary-tag" style="background:rgba(180,190,200,0.1); color:#7a8a96;">Primary</div>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Obsidian</div>
+          <div class="swatch-hex">#0A0A0A</div>
+        </div>
+      </div>
+
+      <div class="swatch-card">
+        <div class="swatch-block" style="background:#1c1c1c;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Graphite</div>
+          <div class="swatch-hex">#1C1C1C</div>
+        </div>
+      </div>
+
+      <div class="swatch-card">
+        <div class="swatch-block" style="background:linear-gradient(135deg, #9aa4ae 0%, #c8d0d8 45%, #e8ecf0 70%, #b0bcc8 100%);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Silver</div>
+          <div class="swatch-hex">#C8D0D8</div>
+        </div>
+      </div>
+
+      <div class="swatch-card">
+        <div class="swatch-block" style="background:#c0d4e4;">
+          <div class="swatch-primary-tag" style="background:rgba(10,20,40,0.15); color:#1a3a54;">Accent</div>
+        </div>
+        <div class="swatch-info">
+          <div class="swatch-name">Ice Blue</div>
+          <div class="swatch-hex">#C0D4E4</div>
+        </div>
+      </div>
+
+      <div class="swatch-card">
+        <div class="swatch-block" style="background:#e8f2f8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Frost</div>
+          <div class="swatch-hex">#E8F2F8</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-rule">
+      <div class="color-rule-item">
+        <div class="rule-swatch" style="background:#0a0a0a; border: 0.5px solid #2a2a2a;"></div>
+        <div class="rule-text">Obsidian is the dominant background — use for hero sections and full-bleed layouts</div>
+      </div>
+      <div class="color-rule-item">
+        <div class="rule-swatch" style="background:linear-gradient(135deg, #9aa4ae, #e8ecf0, #b0bcc8);"></div>
+        <div class="rule-text">Silver gradient is reserved for logo, headlines, and metallic accents only</div>
+      </div>
+      <div class="color-rule-item">
+        <div class="rule-swatch" style="background:#c0d4e4;"></div>
+        <div class="rule-text">Ice Blue is the brand accent — CTAs, underlines, hover states, data highlights</div>
+      </div>
+      <div class="color-rule-item">
+        <div class="rule-swatch" style="background:#e8f2f8;"></div>
+        <div class="rule-text">Frost is for subtle surface differentiation — cards, input backgrounds on light mode</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TYPOGRAPHY -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Typography</span>
+      <div class="section-line"></div>
+    </div>
+
+    <div class="type-grid">
+      <div class="type-card">
+        <div class="type-specimen-display">Luxury.<br>Precision.<br>Results.</div>
+        <div class="type-meta">
+          <div class="type-name">Cormorant Garamond</div>
+          <div class="type-use">Display</div>
+        </div>
+      </div>
+      <div class="type-card">
+        <div class="type-specimen-body" style="font-size:14px; color:#6a7a86;">
+          City2Shore operates at the intersection of local expertise and elevated service. Every transaction is handled with discretion, clarity, and a commitment to results that exceed expectation.
+        </div>
+        <div class="type-specimen-body" style="font-size:11px; margin-bottom:0;">
+          PROPERTIES · INVESTMENT · WHOLESALE
+        </div>
+        <div class="type-meta">
+          <div class="type-name">Montserrat</div>
+          <div class="type-use">Body / UI</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="type-scale">
+      <div class="scale-row">
+        <div class="scale-label">H1</div>
+        <div class="scale-sample scale-h1">Heading One</div>
+        <div class="scale-spec">Cormorant / 36px / 300</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">H2</div>
+        <div class="scale-sample scale-h2">Heading Two</div>
+        <div class="scale-spec">Cormorant / 26px / 400</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">H3</div>
+        <div class="scale-sample scale-h3">Section Label</div>
+        <div class="scale-spec">Montserrat / 14px / 500</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Body</div>
+        <div class="scale-sample scale-body">Body text for paragraphs and descriptions</div>
+        <div class="scale-spec">Montserrat / 13px / 300</div>
+      </div>
+      <div class="scale-row">
+        <div class="scale-label">Caption</div>
+        <div class="scale-sample scale-caption">Label / Tag / Meta</div>
+        <div class="scale-spec">Montserrat / 10px / 400</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-brand">City2Shore · Brand Guidelines</div>
+    <div class="footer-ver">Confidential · Internal Use</div>
+  </div>
+
+</div>
