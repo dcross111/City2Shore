@@ -278,38 +278,29 @@
     }
 
     .hero-logo-name {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3em;
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-logo-name .word {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(48px, 7vw, 88px);
       font-weight: 300;
       letter-spacing: 0.14em;
       text-transform: uppercase;
+      line-height: 1;
       background: linear-gradient(180deg, #ffffff 0%, #d4eaf8 30%, #a8d4f0 60%, #7ec0e8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       filter: drop-shadow(0 0 12px rgba(192, 212, 228, 0.25)) drop-shadow(0 0 30px rgba(160, 210, 240, 0.1));
-      line-height: 1;
+      margin-bottom: 0.5rem;
     }
 
-    .hero-logo-lockup .num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(100px, 16vw, 200px);
+    .hero-logo-name .num {
+      font-size: 1.6em;
       font-weight: 600;
       background: linear-gradient(180deg, #ffffff 0%, #c0e0f8 25%, #80c4ec 55%, #4aa0d8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      filter: drop-shadow(0 0 18px rgba(160, 210, 240, 0.4)) drop-shadow(0 0 40px rgba(120, 190, 235, 0.15));
-      line-height: 0.8;
-      margin: -1rem 0 -0.5rem;
+      filter: drop-shadow(0 0 18px rgba(160, 210, 240, 0.4));
+      vertical-align: middle;
     }
 
     /* ─── SNOWFALL ─── */
@@ -1333,10 +1324,7 @@
     <div class="hero-content">
       <div class="hero-logo-lockup">
         <img src="brand_assets/images-2.png" alt="City2Shore Logo" class="hero-logo-img">
-        <span class="num">2</span>
-        <div class="hero-logo-name">
-          <span class="word">City</span><span class="word">Shore</span>
-        </div>
+        <div class="hero-logo-name">City<span class="num">2</span>Shore</div>
         <div class="hero-logo-tagline">Properties</div>
       </div>
       <p class="hero-sub">Exceptional properties. Discreet service. Results that define a new standard of real estate excellence.</p>
