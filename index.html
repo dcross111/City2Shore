@@ -277,17 +277,8 @@
       mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
     }
 
-    .hero-logo-name {
-      font-family: 'Cormorant Garamond', serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
     .hero-logo-name .word {
+      font-family: 'Cormorant Garamond', serif;
       font-size: clamp(48px, 7vw, 88px);
       font-weight: 300;
       letter-spacing: 0.14em;
@@ -297,19 +288,33 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       filter: drop-shadow(0 0 12px rgba(192, 212, 228, 0.25)) drop-shadow(0 0 30px rgba(160, 210, 240, 0.1));
+      line-height: 1;
     }
 
-    .hero-logo-name .num {
-      font-size: clamp(72px, 12vw, 140px);
+    .hero-logo-center {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -0.5rem 0;
+    }
+
+    .hero-logo-center .hero-logo-img {
+      margin-bottom: 0;
+    }
+
+    .hero-logo-center .num {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(100px, 16vw, 200px);
       font-weight: 600;
-      letter-spacing: 0.05em;
       background: linear-gradient(180deg, #ffffff 0%, #c0e0f8 25%, #80c4ec 55%, #4aa0d8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       filter: drop-shadow(0 0 18px rgba(160, 210, 240, 0.4)) drop-shadow(0 0 40px rgba(120, 190, 235, 0.15));
-      margin: 0 0.1em;
-      line-height: 0.85;
+      line-height: 1;
+      z-index: 1;
     }
 
     /* ─── SNOWFALL ─── */
@@ -1331,11 +1336,13 @@
     <div class="snowfall" id="snowfall"></div>
 
     <div class="hero-content">
-      <div class="hero-logo-lockup">
-        <img src="brand_assets/images-2.png" alt="City2Shore Logo" class="hero-logo-img">
-        <div class="hero-logo-name">
-          <span class="word">City</span><span class="num">2</span><span class="word">Shore</span>
+      <div class="hero-logo-lockup hero-logo-name">
+        <span class="word">City</span>
+        <div class="hero-logo-center">
+          <img src="brand_assets/images-2.png" alt="City2Shore Logo" class="hero-logo-img">
+          <span class="num">2</span>
         </div>
+        <span class="word">Shore</span>
         <div class="hero-logo-tagline">Properties</div>
       </div>
       <p class="hero-sub">Exceptional properties. Discreet service. Results that define a new standard of real estate excellence.</p>
