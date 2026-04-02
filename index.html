@@ -277,6 +277,14 @@
       mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 100%);
     }
 
+    .hero-logo-name {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3em;
+      margin-bottom: 0.3rem;
+    }
+
     .hero-logo-name .word {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(48px, 7vw, 88px);
@@ -291,20 +299,7 @@
       line-height: 1;
     }
 
-    .hero-logo-center {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: -0.5rem 0;
-    }
-
-    .hero-logo-center .hero-logo-img {
-      margin-bottom: 0;
-    }
-
-    .hero-logo-center .num {
-      position: absolute;
+    .hero-logo-lockup .num {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(100px, 16vw, 200px);
       font-weight: 600;
@@ -314,7 +309,7 @@
       background-clip: text;
       filter: drop-shadow(0 0 18px rgba(160, 210, 240, 0.4)) drop-shadow(0 0 40px rgba(120, 190, 235, 0.15));
       line-height: 1;
-      z-index: 1;
+      margin-bottom: 0.3rem;
     }
 
     /* ─── SNOWFALL ─── */
@@ -1336,13 +1331,12 @@
     <div class="snowfall" id="snowfall"></div>
 
     <div class="hero-content">
-      <div class="hero-logo-lockup hero-logo-name">
-        <span class="word">City</span>
-        <div class="hero-logo-center">
-          <img src="brand_assets/images-2.png" alt="City2Shore Logo" class="hero-logo-img">
-          <span class="num">2</span>
+      <div class="hero-logo-lockup">
+        <img src="brand_assets/images-2.png" alt="City2Shore Logo" class="hero-logo-img">
+        <div class="hero-logo-name">
+          <span class="word">City</span><span class="word">Shore</span>
         </div>
-        <span class="word">Shore</span>
+        <span class="num">2</span>
         <div class="hero-logo-tagline">Properties</div>
       </div>
       <p class="hero-sub">Exceptional properties. Discreet service. Results that define a new standard of real estate excellence.</p>
