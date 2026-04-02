@@ -284,11 +284,58 @@
       letter-spacing: 0.14em;
       text-transform: uppercase;
       line-height: 1;
-      background: var(--silver-gradient);
+      background: linear-gradient(180deg, #ffffff 0%, #d4eaf8 30%, #a8d4f0 60%, #7ec0e8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      text-shadow: none;
+      filter: drop-shadow(0 0 12px rgba(192, 212, 228, 0.25)) drop-shadow(0 0 30px rgba(160, 210, 240, 0.1));
       margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    /* Ice drip container */
+    .hero-logo-name-wrap {
+      position: relative;
+      display: inline-block;
+    }
+
+    .ice-drips {
+      position: absolute;
+      bottom: -30px;
+      left: 0;
+      width: 100%;
+      height: 60px;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .ice-drip {
+      position: absolute;
+      width: 2px;
+      border-radius: 0 0 3px 3px;
+      background: linear-gradient(to bottom, rgba(180, 220, 240, 0.9), rgba(120, 190, 230, 0.4));
+      animation: drip ease-in-out infinite;
+      transform-origin: top center;
+    }
+
+    .ice-drip::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(180, 220, 240, 0.9), rgba(120, 190, 230, 0.3));
+      box-shadow: 0 0 8px rgba(180, 220, 240, 0.5);
+    }
+
+    @keyframes drip {
+      0% { height: 8px; opacity: 1; }
+      50% { height: 45px; opacity: 1; }
+      100% { height: 8px; opacity: 1; }
     }
 
     .hero-logo-tagline {
@@ -1281,7 +1328,21 @@
     <div class="hero-content">
       <div class="hero-logo-lockup">
         <img src="brand_assets/images-2.png" alt="City2Shore Logo" class="hero-logo-img">
-        <div class="hero-logo-name">City2Shore</div>
+        <div class="hero-logo-name-wrap">
+          <div class="hero-logo-name">City2Shore</div>
+          <div class="ice-drips">
+            <div class="ice-drip" style="left:8%; animation-duration:3.2s; animation-delay:0s;"></div>
+            <div class="ice-drip" style="left:18%; animation-duration:4.1s; animation-delay:1.2s;"></div>
+            <div class="ice-drip" style="left:28%; animation-duration:3.6s; animation-delay:0.5s;"></div>
+            <div class="ice-drip" style="left:38%; animation-duration:4.8s; animation-delay:2.1s;"></div>
+            <div class="ice-drip" style="left:48%; animation-duration:3.4s; animation-delay:0.8s;"></div>
+            <div class="ice-drip" style="left:58%; animation-duration:4.3s; animation-delay:1.7s;"></div>
+            <div class="ice-drip" style="left:68%; animation-duration:3.8s; animation-delay:0.3s;"></div>
+            <div class="ice-drip" style="left:78%; animation-duration:4.5s; animation-delay:1.5s;"></div>
+            <div class="ice-drip" style="left:88%; animation-duration:3.1s; animation-delay:2.4s;"></div>
+            <div class="ice-drip" style="left:95%; animation-duration:4.0s; animation-delay:0.9s;"></div>
+          </div>
+        </div>
         <div class="hero-logo-tagline">Properties</div>
       </div>
       <p class="hero-sub">Exceptional properties. Discreet service. Results that define a new standard of real estate excellence.</p>
