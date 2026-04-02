@@ -302,40 +302,53 @@
 
     .ice-drips {
       position: absolute;
-      bottom: -30px;
+      bottom: -5px;
       left: 0;
       width: 100%;
-      height: 60px;
+      height: 80px;
       pointer-events: none;
       overflow: visible;
     }
 
-    .ice-drip {
+    /* Each icicle: tapers to a point */
+    .icicle {
       position: absolute;
-      width: 2px;
-      border-radius: 0 0 3px 3px;
-      background: linear-gradient(to bottom, rgba(180, 220, 240, 0.9), rgba(120, 190, 230, 0.4));
-      animation: drip ease-in-out infinite;
-      transform-origin: top center;
+      top: 0;
+      background: linear-gradient(180deg,
+        rgba(200, 230, 255, 0.85) 0%,
+        rgba(160, 210, 245, 0.7) 30%,
+        rgba(130, 200, 240, 0.5) 60%,
+        rgba(100, 185, 235, 0.2) 100%);
+      clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 40% 100%);
+      border-radius: 0 0 1px 1px;
+      filter: drop-shadow(0 2px 4px rgba(160, 215, 245, 0.3));
     }
 
-    .ice-drip::after {
+    /* Frost buildup at the top of each icicle */
+    .icicle::before {
       content: '';
       position: absolute;
-      bottom: -5px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 6px;
-      height: 6px;
+      top: -2px;
+      left: -3px;
+      right: -3px;
+      height: 5px;
+      background: radial-gradient(ellipse at center, rgba(210, 235, 255, 0.6), transparent);
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(180, 220, 240, 0.9), rgba(120, 190, 230, 0.3));
-      box-shadow: 0 0 8px rgba(180, 220, 240, 0.5);
+      filter: blur(1px);
     }
 
-    @keyframes drip {
-      0% { height: 8px; opacity: 1; }
-      50% { height: 45px; opacity: 1; }
-      100% { height: 8px; opacity: 1; }
+    /* Tiny glint near the tip */
+    .icicle::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 2px;
+      border-radius: 50%;
+      background: rgba(220, 240, 255, 0.9);
+      box-shadow: 0 0 4px rgba(200, 230, 255, 0.6);
     }
 
     .hero-logo-tagline {
@@ -1331,16 +1344,36 @@
         <div class="hero-logo-name-wrap">
           <div class="hero-logo-name">City2Shore</div>
           <div class="ice-drips">
-            <div class="ice-drip" style="left:8%; animation-duration:3.2s; animation-delay:0s;"></div>
-            <div class="ice-drip" style="left:18%; animation-duration:4.1s; animation-delay:1.2s;"></div>
-            <div class="ice-drip" style="left:28%; animation-duration:3.6s; animation-delay:0.5s;"></div>
-            <div class="ice-drip" style="left:38%; animation-duration:4.8s; animation-delay:2.1s;"></div>
-            <div class="ice-drip" style="left:48%; animation-duration:3.4s; animation-delay:0.8s;"></div>
-            <div class="ice-drip" style="left:58%; animation-duration:4.3s; animation-delay:1.7s;"></div>
-            <div class="ice-drip" style="left:68%; animation-duration:3.8s; animation-delay:0.3s;"></div>
-            <div class="ice-drip" style="left:78%; animation-duration:4.5s; animation-delay:1.5s;"></div>
-            <div class="ice-drip" style="left:88%; animation-duration:3.1s; animation-delay:2.4s;"></div>
-            <div class="ice-drip" style="left:95%; animation-duration:4.0s; animation-delay:0.9s;"></div>
+            <!-- C -->
+            <div class="icicle" style="left:3%; width:4px; height:28px;"></div>
+            <div class="icicle" style="left:5.5%; width:3px; height:18px;"></div>
+            <!-- i -->
+            <div class="icicle" style="left:11%; width:3px; height:22px;"></div>
+            <!-- t -->
+            <div class="icicle" style="left:16%; width:3px; height:32px;"></div>
+            <div class="icicle" style="left:18%; width:2px; height:14px;"></div>
+            <!-- y -->
+            <div class="icicle" style="left:23%; width:4px; height:38px;"></div>
+            <div class="icicle" style="left:25.5%; width:2px; height:20px;"></div>
+            <!-- 2 -->
+            <div class="icicle" style="left:32%; width:3px; height:24px;"></div>
+            <div class="icicle" style="left:34%; width:2px; height:16px;"></div>
+            <!-- S -->
+            <div class="icicle" style="left:40%; width:4px; height:30px;"></div>
+            <div class="icicle" style="left:43%; width:3px; height:20px;"></div>
+            <!-- h -->
+            <div class="icicle" style="left:50%; width:3px; height:34px;"></div>
+            <div class="icicle" style="left:52%; width:2px; height:16px;"></div>
+            <!-- o -->
+            <div class="icicle" style="left:58%; width:3px; height:22px;"></div>
+            <div class="icicle" style="left:61%; width:2px; height:14px;"></div>
+            <!-- r -->
+            <div class="icicle" style="left:67%; width:4px; height:36px;"></div>
+            <div class="icicle" style="left:69%; width:2px; height:18px;"></div>
+            <!-- e -->
+            <div class="icicle" style="left:75%; width:3px; height:26px;"></div>
+            <div class="icicle" style="left:77.5%; width:4px; height:40px;"></div>
+            <div class="icicle" style="left:79%; width:2px; height:15px;"></div>
           </div>
         </div>
         <div class="hero-logo-tagline">Properties</div>
