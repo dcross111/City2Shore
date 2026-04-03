@@ -1306,8 +1306,8 @@
     });
 
     // ─── ANIMATED BRAND WORDS ───
-    const cityWords = ["City","Ciudad","City","城市","City","Lungsod","City","Thành Phố","City","مدينة","City","Ville","City","도시","City","Cidade","City","शहर"];
-    const shoreWords = ["Shore","Costa","Shore","海岸","Shore","Dalampasigan","Shore","Bờ Biển","Shore","شاطئ","Shore","Rivage","Shore","해안","Shore","Costa","Shore","किनारा"];
+    const cityWords = ["City","Ciudad","City","城市","City","Thành Phố","City","مدينة","City","Cidade","City","Город","City","ក្រុង"];
+    const shoreWords = ["Shore","Costa","Shore","海岸","Shore","Bờ Biển","Shore","شاطئ","Shore","Costa","Shore","Берег","Shore","សមុទ្រ"];
     let wordIndex = 0;
     const cityEl = document.querySelector('.city-word');
     const shoreEl = document.querySelector('.shore-word');
@@ -1322,7 +1322,7 @@
           shoreEl.textContent = shoreWords[wordIndex];
           cityEl.style.opacity = 1;
           shoreEl.style.opacity = 1;
-          setTimeout(cycleWords, cityWords[wordIndex] === "City" ? 2000 : 1000);
+          setTimeout(cycleWords, cityWords[wordIndex] === "City" ? 400 : 1000);
         }, 300);
       }
       setTimeout(cycleWords, 1000);
