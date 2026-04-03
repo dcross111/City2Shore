@@ -320,8 +320,9 @@
     .why-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: center;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 4rem;
     }
 
     .why-title {
@@ -345,10 +346,14 @@
       font-style: italic;
     }
 
+    .why-video {
+      width: 100%;
+    }
+
     .why-video video {
       width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.1);
+      border-radius: 16px;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.12);
     }
 
     /* ─── PROCESS / REWIRED SECTION ─── */
@@ -908,13 +913,15 @@
       <div class="why-grid">
         <div class="reveal">
           <h2 class="why-title">Why City2Shore</h2>
+        </div>
+        <div class="reveal" style="transition-delay:0.1s">
           <p class="why-text">Your life's changing. Don't just find a place — find what's next. <span class="em">We help you move forward with clarity, confidence, and the right agent by your side.</span></p>
         </div>
-        <div class="why-video reveal" style="transition-delay:0.15s">
-          <video autoplay muted loop playsinline>
-            <source src="My Movie.mp4" type="video/mp4">
-          </video>
-        </div>
+      </div>
+      <div class="why-video reveal" style="transition-delay:0.2s">
+        <video autoplay muted loop playsinline>
+          <source src="My Movie.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </section>
