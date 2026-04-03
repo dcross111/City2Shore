@@ -312,25 +312,20 @@
     .hero-cta svg { width: 18px; height: 18px; }
 
     /* ─── WHY CITY2SHORE ─── */
-    /* ─── WHY SECTION: ANIMATED BRAND ─── */
+    /* ─── WHY SECTION ─── */
     .why-section {
-      padding: 0;
-      background: var(--white);
-    }
-
-    .why-brand {
       background: #0a0a0a;
       text-align: center;
-      padding: 2.5rem 2rem;
+      padding: 6rem 2rem;
     }
 
     .why-label {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 42px);
-      letter-spacing: -0.02em;
-      text-transform: none;
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
       color: #5a7080;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
 
     .brand-animate {
@@ -339,12 +334,13 @@
       justify-content: center;
       gap: 0.1em;
       font-family: 'DM Serif Display', serif;
-      font-size: clamp(28px, 4vw, 42px);
+      font-size: 72px;
       font-weight: 400;
+      margin-bottom: 3rem;
     }
 
     .brand-animate .two {
-      color: #6ab0e0;
+      color: #C0D4E4;
       flex-shrink: 0;
     }
 
@@ -353,50 +349,20 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      transition: opacity 0.5s ease;
-    }
-
-    .why-content {
-      padding: 6rem 0;
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-      margin-bottom: 4rem;
-    }
-
-    .why-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      color: var(--charcoal);
-    }
-
-    .why-text {
-      font-size: 20px;
-      color: var(--mid);
-      line-height: 1.75;
-      letter-spacing: -0.01em;
-    }
-
-    .why-text .em {
-      color: var(--light);
-      font-style: italic;
+      transition: opacity 0.3s ease;
     }
 
     .why-video {
+      max-width: 1200px;
+      margin: 0 auto;
       width: 100%;
     }
 
     .why-video video {
       width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 12px 60px rgba(0,0,0,0.12);
+      height: 350px;
+      object-fit: cover;
+      border-radius: 4px;
     }
 
     /* ─── PROCESS / REWIRED SECTION ─── */
@@ -965,6 +931,8 @@
       .search-tab { padding: 8px 18px; font-size: 12px; }
       .search-bar { flex-direction: column; }
       .search-btn { padding: 14px 24px; justify-content: center; border-radius: 0 0 7px 7px; }
+      .brand-animate { font-size: 40px; }
+      .why-video video { height: 200px; }
     }
   </style>
 </head>
@@ -1014,33 +982,16 @@
 
   <!-- ─── WHY CITY2SHORE ─── -->
   <section class="why-section" id="why">
-    <!-- Animated Brand Banner -->
-    <div class="why-brand reveal-scale">
-      <p class="why-label">Why</p>
-      <div class="brand-animate">
-        <span class="city-word">City</span>
-        <span class="two">2</span>
-        <span class="shore-word">Shore</span>
-      </div>
+    <p class="why-label reveal">Why</p>
+    <div class="brand-animate reveal" style="transition-delay:0.1s">
+      <span class="city-word">City</span>
+      <span class="two">2</span>
+      <span class="shore-word">Shore</span>
     </div>
-
-    <!-- Content + Video -->
-    <div class="why-content">
-      <div class="container">
-        <div class="why-grid">
-          <div class="reveal-left">
-            <h2 class="why-title">Find What Moves You</h2>
-          </div>
-          <div class="reveal-right" style="transition-delay:0.15s">
-            <p class="why-text">Your life's changing. Don't just find a place — find what's next. <span class="em">We help you move forward with clarity, confidence, and the right agent by your side.</span></p>
-          </div>
-        </div>
-        <div class="why-video reveal-scale" style="transition-delay:0.25s">
-          <video autoplay muted loop playsinline>
-            <source src="My Movie.mp4" type="video/mp4">
-          </video>
-        </div>
-      </div>
+    <div class="why-video reveal-scale" style="transition-delay:0.2s">
+      <video autoplay muted loop playsinline>
+        <source src="My Movie.mp4" type="video/mp4">
+      </video>
     </div>
   </section>
 
@@ -1346,14 +1297,14 @@
     });
 
     // ─── ANIMATED BRAND WORDS ───
-    const cityWords = ["City","Ciudad","城市","Lungsod","Thành Phố","مدينة","Ville","도시","Cidade","शहर"];
-    const shoreWords = ["Shore","Costa","海岸","Dalampasigan","Bờ Biển","شاطئ","Rivage","해안","Costa","किनारा"];
+    const cityWords = ["City","Ciudad","City","城市","City","Lungsod","City","Thành Phố","City","مدينة","City","Ville","City","도시","City","Cidade","City","शहर"];
+    const shoreWords = ["Shore","Costa","Shore","海岸","Shore","Dalampasigan","Shore","Bờ Biển","Shore","شاطئ","Shore","Rivage","Shore","해안","Shore","Costa","Shore","किनारा"];
     let wordIndex = 0;
     const cityEl = document.querySelector('.city-word');
     const shoreEl = document.querySelector('.shore-word');
 
     if (cityEl && shoreEl) {
-      setInterval(() => {
+      function cycleWords() {
         wordIndex = (wordIndex + 1) % cityWords.length;
         cityEl.style.opacity = 0;
         shoreEl.style.opacity = 0;
@@ -1362,8 +1313,10 @@
           shoreEl.textContent = shoreWords[wordIndex];
           cityEl.style.opacity = 1;
           shoreEl.style.opacity = 1;
-        }, 500);
-      }, 2000);
+          setTimeout(cycleWords, cityWords[wordIndex] === "City" ? 400 : 1000);
+        }, 300);
+      }
+      setTimeout(cycleWords, 1000);
     }
 
     // ─── PRIVACY MODAL ───
