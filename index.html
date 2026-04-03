@@ -836,11 +836,73 @@
     /* ─── SCROLL REVEAL ─── */
     .reveal {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* Scale-in for videos and cards */
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-scale.visible { opacity: 1; transform: scale(1); }
+
+    /* Slide from left */
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+    /* Slide from right */
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(60px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* Text line wipe reveal */
+    .reveal-wipe {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .reveal-wipe::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--white);
+      transform: scaleX(1);
+      transform-origin: right;
+      transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal-wipe.visible::after {
+      transform: scaleX(0);
+    }
+
+    /* Hero entrance animation */
+    .hero-content {
+      animation: hero-entrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes hero-entrance {
+      from { opacity: 0; transform: translateY(30px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* Parallax scroll hint */
+    .parallax-section {
+      will-change: transform;
+    }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 1024px) {
@@ -911,14 +973,14 @@
   <section class="why-section" id="why">
     <div class="container">
       <div class="why-grid">
-        <div class="reveal">
+        <div class="reveal-left">
           <h2 class="why-title">Why City2Shore</h2>
         </div>
-        <div class="reveal" style="transition-delay:0.1s">
+        <div class="reveal-right" style="transition-delay:0.15s">
           <p class="why-text">Your life's changing. Don't just find a place — find what's next. <span class="em">We help you move forward with clarity, confidence, and the right agent by your side.</span></p>
         </div>
       </div>
-      <div class="why-video reveal" style="transition-delay:0.2s">
+      <div class="why-video reveal-scale" style="transition-delay:0.25s">
         <video autoplay muted loop playsinline>
           <source src="My Movie.mp4" type="video/mp4">
         </video>
@@ -929,7 +991,7 @@
   <!-- ─── PROCESS ─── -->
   <section class="process-section">
     <div class="container">
-      <div class="process-header reveal">
+      <div class="process-header reveal-scale">
         <h2>Real Estate, <span class="em">Rewired.</span></h2>
       </div>
       <div class="process-grid">
@@ -955,7 +1017,7 @@
   <!-- ─── SERVICES ─── -->
   <section class="services-section" id="services">
     <div class="container">
-      <div class="services-header reveal">
+      <div class="services-header reveal-scale">
         <h2>What We Do</h2>
         <p>From residential sales to commercial acquisitions, we bring precision and expertise to every transaction.</p>
       </div>
@@ -994,7 +1056,7 @@
   <!-- ─── TESTIMONIALS ─── -->
   <section class="testimonials-section" id="testimonials">
     <div class="container">
-      <div class="testimonials-header reveal">
+      <div class="testimonials-header reveal-scale">
         <h2>What Our Clients Say</h2>
       </div>
 
@@ -1190,7 +1252,7 @@
     });
 
     // ─── SCROLL REVEAL ───
-    const reveals = document.querySelectorAll('.reveal');
+    const allReveals = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right, .reveal-wipe');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1198,9 +1260,28 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-    reveals.forEach(el => observer.observe(el));
+    allReveals.forEach(el => observer.observe(el));
+
+    // ─── PARALLAX ON SCROLL ───
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+
+      // Subtle parallax on hero background
+      const heroBg = document.querySelector('.hero-bg');
+      if (heroBg) heroBg.style.transform = `translateY(${scrollY * 0.3}px)`;
+
+      // Subtle parallax on video
+      const whyVideo = document.querySelector('.why-video video');
+      if (whyVideo) {
+        const rect = whyVideo.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          const offset = (rect.top - window.innerHeight / 2) * 0.05;
+          whyVideo.style.transform = `translateY(${offset}px)`;
+        }
+      }
+    }, { passive: true });
 
     // ─── NAV SCROLL ───
     window.addEventListener('scroll', () => {
